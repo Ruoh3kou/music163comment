@@ -44,7 +44,7 @@ def get_json(url, params, encSecKey):
     response = requests.post(url, headers=headers, data=data)
     return response.content
 
-def doit(songID,page):
+def start(songID,page):
     url = "http://music.163.com/weapi/v1/resource/comments/R_SO_4_"+str(songID)+"/?csrf_token="
     global param1
     param1 = '{rid:"", offset:"'+str(page)+'", total:"true", limit:"20", csrf_token:""}'
@@ -58,8 +58,9 @@ def doit(songID,page):
 if __name__ == "__main__":
     total=0
     pages=500
+    songId = 26045007
     for i in range(pages):
-        total, comments = doit(26045007,i*20)
+        total, comments = start(songID,i*20)
         for item in comments:
             print(item['user']['nickname'],'----', item['content'])
     print(total)
