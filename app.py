@@ -3,6 +3,7 @@ import json
 from Crypto.Cipher import AES
 import base64
 import csv
+import sys
 
 headers = {
     'Host':'music.163.com',
@@ -57,10 +58,12 @@ def start(songID,page):
 
 if __name__ == "__main__":
     total=0
-    pages=500
-    songId = 26045007
-    for i in range(pages):
-        total, comments = start(songID,i*20)
-        for item in comments:
-            print(item['user']['nickname'],'----', item['content'])
+    pages=200
+    songID = #歌曲ID
+    with open('pinglun.txt', 'w', encoding='utf-8') as f:
+        for i in range(pages):
+            total, comments = start(songID,i*20)
+            for item in comments:
+                f.write(item['content']+'\n')
+                print(item['user']['nickname'],'----', item['content'])
     print(total)
