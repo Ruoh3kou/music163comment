@@ -59,7 +59,7 @@ def start(songID,page):
 if __name__ == "__main__":
     total=0
     pages=200
-    songID = #歌曲ID
+    songID = 37610720
     with open('pinglun.txt', 'w', encoding='utf-8') as f:
         for i in range(pages):
             total, comments = start(songID,i*20)
